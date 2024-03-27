@@ -1,38 +1,179 @@
-.App {
-  text-align: center;
+.body-app {
+  margin-top: 5rem;
 }
 
-.App-logo {
-  height: 40vmin;
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* pagination css */
+
+.pagination-container {
+  display: flex;
+  list-style-type: none;
+  /* margin-right: 10px; */
+}
+
+.pagination-item {
+  padding: 0px 12px;
+  height: 32px;
+  text-align: center;
+  margin: auto 4px;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  letter-spacing: 0.01071em;
+  border-radius: 16px;
+  line-height: 1.43;
+  font-size: 13px;
+  min-width: 32px;
+}
+
+.pagination-item.dots:hover {
+  background-color: transparent;
+  cursor: default;
+}
+
+.pagination-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+}
+
+.pagination-item.selected {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.pagination-item .arrow::before {
+  position: relative;
+  /* top: 3pt; Uncomment this to lower the icons as requested in comments*/
+  content: '';
+  /* By using an em scale, the arrows will size with the font */
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  border-right: 0.12em solid rgba(0, 0, 0, 0.87);
+  border-top: 0.12em solid rgba(0, 0, 0, 0.87);
+}
+
+.pagination-item .arrow.left {
+  transform: rotate(-135deg) translate(-50%);
+}
+
+.pagination-item .arrow.right {
+  transform: rotate(45deg);
+}
+
+.pagination-item.disabled {
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.pagination-item.disabled .arrow::before {
+  border-right: 0.12em solid rgba(0, 0, 0, 0.43);
+  border-top: 0.12em solid rgba(0, 0, 0, 0.43);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.pagination-item.disabled:hover {
+  background-color: transparent;
+  cursor: default;
+}
+
+.pagination-bar {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+}
+
+
+h1,
+p {
+  font-family: Lato;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  position: relative;
+}
+
+thead tr th {
+  font-weight: 500;
+  text-align: left;
+  background-color: #fafafa;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+th,
+td {
+  padding: 8px;
+  overflow-wrap: break-word;
+}
+
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+ul {
+  padding: 1rem;
+}
+
+.clickable-tr:hover {
+  cursor: pointer;
+  color: rgb(31, 143, 177) !important;
+  /* font-weight: 500; */
+}
+
+.form-container {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form-container form {
+  width: 600px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.post-description {
+  font-size: 1.2rem;
+  color: gray;
+  font-weight: 500;
+}
+
+.post-skeleton .placeholder {
+  min-height: 2rem;
+}
+
+.text-info {
+  text-align: right;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgb(231, 231, 231);
+}
+
+.active{
+  text-decoration: underline;
 }
