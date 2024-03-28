@@ -1,7 +1,7 @@
-import React from 'react';
-import { useMemo } from 'react';
+import React from "react";
+import { useMemo } from "react";
 
-export const DOTS = '...';
+export const DOTS = "...";
 
 const range = (start, end) => {
   let length = end - start + 1;
@@ -12,13 +12,13 @@ export const usePagination = ({
   totalCount,
   pageSize,
   siblingCount = 1,
-  currentPage
+  currentPage,
 }) => {
   const paginationRange = useMemo(() => {
     const totalPageCount = Math.ceil(totalCount / pageSize);
 
     // Pages count is determined as siblingCount + firstPage + lastPage + currentPage + 2*DOTS
-    const totalPageNumbers = siblingCount + 4;
+    const totalPageNumbers = siblingCount * 2 + 5; // Adjusted to show fewer pages
 
     /*
       If the number of pages is less than the page numbers we want to show in our
@@ -36,24 +36,26 @@ export const usePagination = ({
 
     /*
       We do not want to show dots if there is only one position left 
-      after/before the left/right page count as that would lead to a change if our Pagination
+      after/before the left/right page count as that would lead to a change in our Pagination
       component size which we do not want
+
+      
     */
     const shouldShowLeftDots = leftSiblingIndex > 2;
-    const shouldShowRightDots = rightSiblingIndex < totalPageCount - 2;
-
+    const shouldShowRightDots = rightSiblingIndex < totalPageCount - 1;
+    // console.log(shouldShowLeftDots, shouldShowRightDots);
     const firstPageIndex = 1;
     const lastPageIndex = totalPageCount;
 
     if (!shouldShowLeftDots && shouldShowRightDots) {
-      let leftItemCount = 3 + 1 * siblingCount;
+      let leftItemCount = siblingCount * 2 + 3;
       let leftRange = range(1, leftItemCount);
 
       return [...leftRange, DOTS, totalPageCount];
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
-      let rightItemCount = 3 + 1 * siblingCount;
+      let rightItemCount = siblingCount * 2 + 3;
       let rightRange = range(
         totalPageCount - rightItemCount + 1,
         totalPageCount

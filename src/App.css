@@ -134,7 +134,8 @@ ul {
 
 .clickable-tr:hover {
   cursor: pointer;
-  color: rgb(31, 143, 177) !important;
+  color: rgb(0, 4, 255) !important;
+  transform: scale(1);
   /* font-weight: 500; */
 }
 

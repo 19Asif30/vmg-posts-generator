@@ -21,7 +21,7 @@ const Post = () => {
             <Link to={"/posts"}>Home</Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Post
+            Post {id}
           </li>
         </ol>
       </nav>
@@ -32,6 +32,9 @@ const Post = () => {
             <h2>{data.title}</h2>
           </div>
           <div className="post-description">{data.body}</div>
+          <br />
+          <div className="fw-bold">Created by User ID: {data.userId}</div>
+
         </div>
       )}
     </>

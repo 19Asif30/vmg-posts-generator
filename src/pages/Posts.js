@@ -45,7 +45,7 @@ export default function Posts() {
         </p>
         <div className="table-container">
           <table className="table table-striped table-bordered">
-            <thead>
+            <thead className="table-dark">
               <tr>
                 {columnDetails.map((item) => (
                   <th

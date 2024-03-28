@@ -11,7 +11,7 @@ const NavBar = () => {
         </Link>
         <ul></ul>
 
-        <ul className="navbar-nav mb-2 flex-row mb-lg-0">
+        <ul className="navbar-nav mb-2 flex-row mb-lg-0 gap-3">
           <li className="nav-item">
             <Link
               className={pathname === "/posts" ? "nav-link active" : "nav-link"}

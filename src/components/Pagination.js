@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 import { usePagination, DOTS } from "./usePagination";
 const Pagination = (props) => {
@@ -17,18 +17,30 @@ const Pagination = (props) => {
     siblingCount,
     pageSize,
   });
+  // console.log(paginationRange)
+  const [pageTrigger, setPageTrigger] = useState(0);
 
+  // console.log(paginationRange.map(item=>item === DOTS))
   if (currentPage === 0 || paginationRange.length < 2) {
     return null;
   }
 
   const onNext = () => {
     onPageChange(currentPage + 1);
+    setPageTrigger(prev=>prev+1)
+
   };
 
   const onPrevious = () => {
     onPageChange(currentPage - 1);
+    setPageTrigger(prev=>prev+1)
   };
+
+  const handlePageChange = (pageNumber)=>{
+    onPageChange(pageNumber);
+    setPageTrigger(prev=>prev+1)
+
+  }
 
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
@@ -43,10 +55,12 @@ const Pagination = (props) => {
       >
         <div>prev</div>
       </li>
-      {paginationRange.map((pageNumber) => {
+      {paginationRange.map((pageNumber, index) => {
+        // console.log(pageNumber)
         if (pageNumber === DOTS) {
+          console.log('dots printing')
           return (
-            <li className="pagination-item dots" key={pageNumber}>
+            <li className="pagination-item dots" key={index+pageNumber}>
               &#8230;
             </li>
           );
@@ -57,7 +71,7 @@ const Pagination = (props) => {
             className={classnames("pagination-item", {
               selected: pageNumber === currentPage,
             })}
-            onClick={() => onPageChange(pageNumber)}
+            onClick={() => handlePageChange(pageNumber)}
             key={pageNumber}
           >
             {pageNumber}
